@@ -31,4 +31,16 @@ jobs:
         run: flutter test
 
       - name: Android Build Appbundle
-        run: flutter build appbundle
+        run: flutter build appbundle'
+
+      - name: Create Github Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/app/outputs/bundle/release/*.aab"
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Save appbundle to Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Appbundle
+          path: build/app/outputs/bundle/release/app-release.aab
