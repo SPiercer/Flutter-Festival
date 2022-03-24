@@ -31,7 +31,7 @@ jobs:
         run: flutter test
 
       - name: Android Build Appbundle
-        run: flutter build appbundle'
+        run: flutter build appbundle
 
       - name: Create Github Release
         uses: ncipollo/release-action@v1
