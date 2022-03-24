@@ -1,14 +1,14 @@
-name: Build Android Appbundle
+name: Build Android APK
 
 on:
   push:
     branches:
-      - main
+     - main
     paths-ignore:
-      - .github/workflows/build_appbundle.yaml
+     - .github/workflows/build_apk.yaml
 jobs:
 
-  build-android-appbundle:
+  build-android-apk:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,14 +30,8 @@ jobs:
       - name: Run test
         run: flutter test
 
-      - name: Android Build Appbundle
-        run: flutter build appbundle
-
-      - name: Create Github Release
-        uses: ncipollo/release-action@v1
-        with:
-          artifacts: "build/app/outputs/bundle/release/*.aab"
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Android Build APK
+        run: flutter build apk
 
       - name: Save appbundle to Artifacts
         uses: actions/upload-artifact@v2
