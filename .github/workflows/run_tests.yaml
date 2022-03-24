@@ -3,13 +3,11 @@ name: Run Tests
 on:
   push:
     branches:
-      - main
       - dev
     paths-ignore:
       - .github/workflows/run_tests.yaml
   pull_request:
     branches:
-      - main
       - dev
     paths-ignore:
        - .github/workflows/run_tests.yaml
