@@ -10,8 +10,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const MyHomePage(title: 'Flutter Festival ❤️'),
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+      ),
+      home: const MyHomePage(
+        title: 'Flutter Festival ❤️',
+      ),
     );
   }
 }
@@ -26,7 +30,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String result = 'Select an Operation';
+  num? result;
 
   @override
   Widget build(BuildContext context) {
@@ -39,28 +43,31 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    result = Operations.add(2, 2).toString();
-                  });
-                },
-                child: const Text("2 + 2")),
+              onPressed: () {
+                setState(() {
+                  result = Operations.add(2, 2);
+                });
+              },
+              child: const Text("2 + 2"),
+            ),
             ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    result = Operations.multiply(2, 2).toString();
-                  });
-                },
-                child: const Text("2 × 2")),
+              onPressed: () {
+                setState(() {
+                  result = Operations.multiply(2, 2);
+                });
+              },
+              child: const Text("2 × 2"),
+            ),
             ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    result = Operations.divide(2, 2).toString();
-                  });
-                },
-                child: const Text("2 ÷ 2")),
+              onPressed: () {
+                setState(() {
+                  result = Operations.divide(2, 2);
+                });
+              },
+              child: const Text("2 ÷ 2"),
+            ),
             Text(
-              result,
+              result != null ? result.toString() : 'Select an Operation',
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
@@ -72,6 +79,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
 abstract class Operations {
   static num add(num left, num right) => (left + right);
+
   static num multiply(num left, num right) => (left * right);
+
   static num divide(num left, num right) => (left / right);
 }
