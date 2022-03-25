@@ -1,14 +1,14 @@
-name: Build Android APK
+name: Build Android Appbundle
 
 on:
   push:
     branches:
      - main
     paths-ignore:
-     - .github/workflows/build_apk.yaml
+     - .github/workflows/build_appbundle.yaml
 jobs:
 
-  build-android-apk:
+  build-android-appbundle:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,8 +30,8 @@ jobs:
       - name: Run test
         run: flutter test
 
-      - name: Android Build APK
-        run: flutter build apk
+      - name: Android Build Appbundle
+        run: flutter build appbundle
 
       - name: Save appbundle to Artifacts
         uses: actions/upload-artifact@v2
